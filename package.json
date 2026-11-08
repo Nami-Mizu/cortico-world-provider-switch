@@ -1,0 +1,58 @@
+{
+  "name": "cortico-world-provider-switch",
+  "version": "0.1.3",
+  "type": "module",
+  "description": "在 WebUI 面板上一点切换本部署的模型供应商端点,并把同一个动作交给 bot 当工具调用;切换对下一次模型请求立即生效。",
+  "license": "MIT",
+  "author": "Nami-Mizu (涟想时雨)",
+  "contributors": [
+    {
+      "name": "DeepSeek",
+      "url": "https://www.deepseek.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nami-Mizu/cortico-world-provider-switch.git"
+  },
+  "homepage": "https://github.com/Nami-Mizu/cortico-world-provider-switch#readme",
+  "bugs": {
+    "url": "https://github.com/Nami-Mizu/cortico-world-provider-switch/issues"
+  },
+  "keywords": [
+    "cortico-world",
+    "cortico"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.28.6",
+  "main": "./src/index.ts",
+  "cortico": {
+    "kind": "world",
+    "api": 6,
+    "tags": [],
+    "describe": "describe.json",
+    "webUiClient": "dist/webui.js"
+  },
+  "files": [
+    "src",
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "describe.json"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.webui.json --noEmit",
+    "build:webui": "esbuild src/webui/client.ts --bundle --format=esm --target=es2022 --platform=browser --outfile=dist/webui.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "cortico": "^0.2.13",
+    "esbuild": "0.28.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
