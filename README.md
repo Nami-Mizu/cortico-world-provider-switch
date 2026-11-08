@@ -61,9 +61,3 @@ WebUI 设了访问密码时，把 `CORTICO_WEB_PASSWORD` 写进这个部署的 `
 - 改了包里的文件（尤其是 `package.json` 的版本号）之后，扩展页与 World 卡片会显示「待生效」：框架拿启动时的
   加载结果和磁盘上的版本比对，不一致就提示。这是安装状态，不是切换失败；重启一次进程即消失。用本机目录
   方式安装时磁盘上的版本是实时读的，所以手改版本号会立刻出现这个提示。
-
-**进官方索引**：扩展市场的标签、徽标、评论与截图来自索引仓
-[Pal-AI-Lab/cortico-extensions](https://github.com/Pal-AI-Lab/cortico-extensions)，文件格式以那里的 `DESIGN.md`
-为准，标签词表与贴法见 `TAGS.md`。要进市场得向那个仓提 PR（`index.json` / `catalog.json` / `packages/<包名>.json`），
-由运营方合并；`official` 徽标要求 npm 维护者里有运营方名单中的账号、且 repository 在运营方名下，
-个人包拿不到，最多是普通收录。
