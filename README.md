@@ -62,34 +62,6 @@ WebUI 设了访问密码时，把 `CORTICO_WEB_PASSWORD` 写进这个部署的 `
   加载结果和磁盘上的版本比对，不一致就提示。这是安装状态，不是切换失败；重启一次进程即消失。用本机目录
   方式安装时磁盘上的版本是实时读的，所以手改版本号会立刻出现这个提示。
 
-## 开发
-
-```sh
-pnpm install
-pnpm test          # 单元测试（真端口上的假 WebUI，不联网）
-pnpm typecheck     # 两份 tsconfig：包与浏览器面板
-pnpm build:webui   # 产出 dist/webui.js
-```
-
-在 Cortico 检出根执行契约检查：
-
-```sh
-pnpm describe:extension <这个包的目录>
-pnpm check:extension <这个包的目录>
-```
-
-改工具、事件、环境提示词之后重跑 `describe:extension`，`describe.json` 才会跟着变。
-
-## 发布
-
-**GitHub**：仓库名建议与包名一致（`cortico-world-provider-switch`）。`dist/webui.js` 是提交进仓库的产物
-（manifest 的 `webUiClient` 指着它），`.github/workflows/check.yml` 会在 push 时跑 typecheck、测试，并确认
-重新构建后 `dist/webui.js` 没有差异。别人 clone 后可以直接用本机目录方式安装，不必先 build。
-
-**npm**：`pnpm publish --access public`。包名若已被占，改成 `@<你的作用域>/cortico-world-provider-switch`，
-`package.json` 的 `name` 要一起改。发布后 WebUI「扩展」页就能按 `cortico-world` 关键字搜到它；
-注意 pnpm 默认的 `minimumReleaseAge` 是 24 小时，刚发布的版本要等过了门槛才会被自动解析到（点名版本可以装）。
-
 **进官方索引**：扩展市场的标签、徽标、评论与截图来自索引仓
 [Pal-AI-Lab/cortico-extensions](https://github.com/Pal-AI-Lab/cortico-extensions)，文件格式以那里的 `DESIGN.md`
 为准，标签词表与贴法见 `TAGS.md`。要进市场得向那个仓提 PR（`index.json` / `catalog.json` / `packages/<包名>.json`），
